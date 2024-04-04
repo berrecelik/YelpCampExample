@@ -1,0 +1,48 @@
+module.exports = [
+  {
+    city: "New York",
+    growth_from_2000_to_2013: "4.8%",
+    latitude: 40.7127837,
+    longitude: -74.0059413,
+    population: "8405837",
+    rank: "1",
+    state: "New York",
+  },
+  {
+    city: "Northglenn",
+    growth_from_2000_to_2013: "15.5%",
+    latitude: 39.8961821,
+    longitude: -104.9811468,
+    population: "37499",
+    rank: "982",
+    state: "Colorado",
+  },
+  {
+    city: "Phenix City",
+    growth_from_2000_to_2013: "31.9%",
+    latitude: 32.4709761,
+    longitude: -85.0007653,
+    population: "37498",
+    rank: "983",
+    state: "Alabama",
+  },
+
+  {
+    city: "Keizer",
+    growth_from_2000_to_2013: "14.4%",
+    latitude: 44.9901194,
+    longitude: -123.0262077,
+    population: "37064",
+    rank: "997",
+    state: "Oregon",
+  },
+  {
+    city: "Spanish Fork",
+    growth_from_2000_to_2013: "78.1%",
+    latitude: 40.114955,
+    longitude: -111.654923,
+    population: "36956",
+    rank: "998",
+    state: "Utah",
+  },
+];
