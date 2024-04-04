@@ -31,5 +31,7 @@ const seedDB = async () => {
     await camp.save();
   }
 };
-
-seedDB();
+//we connected and then we closed out
+seedDB().then(() => {
+  mongoose.connection.close();
+});

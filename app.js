@@ -22,18 +22,39 @@ app.set("view engine", "ejs");
 
 app.set("views", path.join(__dirname, "views"));
 
+app.use(express.urlencoded({ extended: true }));
+//parse that body
+
 app.get("/", (req, res) => {
   res.render("home");
 });
 
-app.get("/makecampground", async (req, res) => {
-  const camp = new Campground({
-    title: "My Backyard",
-    description: "cheap camping",
-  });
-  await camp.save();
-  res.send(camp);
+//The res.render method is used to generate HTML on the server and send it to the client.
+//It mainly generates HTML code dynamically using a template engine and sends it to the client by rendering the template file.
+// res.render('view', { data: data });
+app.get("/campgrounds", async (req, res) => {
+  const campgrounds = await Campground.find({});
+  //we're going to pass that through to our template
+  res.render("campgrounds/index", { campgrounds });
 });
+
+app.get("/campgrounds/new", async (req, res) => {
+  res.render("campgrounds/new");
+});
+//order does matter here
+
+// /Campgrounds as a post, where the form is submitted to
+app.post("/campgrounds", async (req, res) => {
+  const campground = new Campground(req.body.campground);
+  await campground.save();
+  res.redirect(`/campgrounds/${campground._id}`);
+});
+//we've got a tell express to parse the body (req.body)
+app.get("/campgrounds/:id", async (req, res) => {
+  const campground = await Campground.findById(req.params.id);
+  res.render("campgrounds/show", { campground });
+});
+
 app.listen(3000, () => {
   console.log("Serving on port 3000");
 });
