@@ -2,6 +2,7 @@
 //like separately from our node app, anytime we want to seed our database
 const mongoose = require("mongoose");
 const cities = require("./cities");
+const images = require("./images");
 const { places, descriptors } = require("./seedHelpers");
 const Campground = require("../models/campground");
 
@@ -24,9 +25,16 @@ const seedDB = async () => {
   //delete everything
   for (let i = 0; i < 10; i++) {
     const random5 = Math.floor(Math.random() * 5);
+    const random7 = Math.floor(Math.random() * 7);
+
+    const price = Math.floor(Math.random() * 20) + 10;
     const camp = new Campground({
       location: `${cities[random5].city}, ${cities[random5].state}`,
       title: `${sample(descriptors)} ${sample(places)}`,
+      image: `${images[random7].image}`,
+      price: price,
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus sequi obcaecati eius ipsum quisquam dolor voluptatem maiores! Et, porro. Deleniti repudiandae amet nostrum rerum facere repellendus. Optio quis culpa repellat esse corporis commodi soluta eos inventore ratione minus dicta a rem aliquam sint, obcaecati magnam neque tempore ut ipsam nostrum!",
     });
     await camp.save();
   }
